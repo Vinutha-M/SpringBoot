@@ -8,5 +8,7 @@ import com.demo.book.entity.Category;
 @Repository
 public interface ICategoryDao extends JpaRepository<Category, Integer> {
 
+	void deleteByCategoryName(String categoryName);
+
 	
 }
