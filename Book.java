@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="book")
 public class Book {
@@ -32,6 +34,7 @@ public class Book {
 	private String description;
 	@Column(name="isbn")
 	private String isbn;
+	@Column(name="price")
 	private double price;
 	LocalDate publishDate;
 	LocalDate lastUpdatedOn;
@@ -40,10 +43,14 @@ public class Book {
 	@JoinColumn(name="category_fk")
 	Category category;
 	
+	@JsonIgnore
+	@OneToOne(mappedBy="book",cascade= CascadeType.ALL)
+	Review review;
+	
 	// Constructors
 		public Book() {}
 		public Book(int bookId, @NotEmpty
-				@Size(min=3, message="book title should have atleast 3 char") String title, String author, String description, String isbn, double price, LocalDate publishDate, LocalDate lastUpdatedOn, Category category ) {
+				@Size(min=3, message="book title should have atleast 3 char") String title, String author, String description, String isbn, double price, LocalDate publishDate, LocalDate lastUpdatedOn, Category category, Review review ) {
 			super();
 			this.bookId = bookId;
 			this.title = title;
@@ -54,6 +61,7 @@ public class Book {
 			this.publishDate = publishDate;
 			this.lastUpdatedOn = lastUpdatedOn;
 			this.category = category;
+			this.review = review;
 			}
 		
 		// getters & setter
@@ -112,13 +120,19 @@ public class Book {
 		public void setCategory(Category category) {
 			this.category = category;
 		}
+		public Review getReview() {
+			return review;
+		}
+		public void setReview(Review review) {
+			this.review = review;
+		}
 		
 		
 		// toString
 		@Override
 		public String toString() {
 			return "Book [bookId=" + bookId + ", title=" + title + ", author=" + author + ", description=" + description + ", isbn=" + isbn + ", price=" + price + ", publishDate="
-					+ publishDate + ", lastUpdatedOn=" + lastUpdatedOn + ", category=" + category +"]";
+					+ publishDate + ", lastUpdatedOn=" + lastUpdatedOn + ", category=" + category +", review=" + review +"]";
 		}
 		
 }
