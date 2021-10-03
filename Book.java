@@ -47,6 +47,10 @@ public class Book {
 	@OneToOne(mappedBy="book",cascade= CascadeType.ALL)
 	Review review;
 	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="orderdetails_fk")
+	OrderDetails orderDetails;
+	
 	// Constructors
 		public Book() {}
 		public Book(int bookId, @NotEmpty
