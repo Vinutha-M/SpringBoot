@@ -131,13 +131,19 @@ public class Book {
 		public void setReview(Review review) {
 			this.review = review;
 		}
+		public OrderDetails getOrderDetails() {
+			return orderDetails;
+		}
+		public void setOrderDetails(OrderDetails orderDetails) {
+			this.orderDetails = orderDetails;
+		}
 		
 		
 		// toString
 		@Override
 		public String toString() {
 			return "Book [bookId=" + bookId + ", title=" + title + ", author=" + author + ", description=" + description + ", isbn=" + isbn + ", price=" + price + ", publishDate="
-					+ publishDate + ", lastUpdatedOn=" + lastUpdatedOn + ", category=" + category +", review=" + review +"]";
+					+ publishDate + ", lastUpdatedOn=" + lastUpdatedOn + ", category=" + category +", review=" + review +", orderDetails=" + orderDetails + "]";
 		}
 		
 }

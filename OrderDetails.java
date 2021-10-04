@@ -25,9 +25,9 @@ private double subTotal;
  @OneToOne(mappedBy="orderDetails",cascade=CascadeType.ALL)
  BookOrder bookOrder;
  
-/* @JsonIgnore
+ @JsonIgnore
 	@OneToOne(mappedBy="orderDetails",cascade= CascadeType.ALL)
-	Book book;*/
+	Book book1;
 
 public  int getQuantity() {
 	return quantity;
