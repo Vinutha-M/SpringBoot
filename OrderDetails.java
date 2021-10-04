@@ -18,15 +18,16 @@ import lombok.Data;
 public class OrderDetails {
 @Id
 @GeneratedValue
+private int book;
 private int quantity;
 private double subTotal;
    
  @OneToOne(mappedBy="orderDetails",cascade=CascadeType.ALL)
  BookOrder bookOrder;
  
- @JsonIgnore
+/* @JsonIgnore
 	@OneToOne(mappedBy="orderDetails",cascade= CascadeType.ALL)
-	Book book;
+	Book book;*/
 
 public  int getQuantity() {
 	return quantity;
@@ -40,17 +41,12 @@ public void setSubTotal(double subTotal) {
 	this.subTotal = subTotal;
 }
 
-public BookOrder getBookOrder() {
-	return bookOrder;
-}
-
-public void setBookOrder(BookOrder bookOrder) {
-	this.bookOrder = bookOrder;
-}
-
 public void setQuantity(int quantity) {
 	this.quantity = quantity;
 }
 
-
+@Override
+public String toString() {
+	return "OrderDetails [quantity=" + quantity + ", subTotal=" + subTotal + "]";
+}
 }

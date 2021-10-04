@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -39,7 +40,7 @@ public class Book {
 	LocalDate publishDate;
 	LocalDate lastUpdatedOn;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="category_fk")
 	Category category;
 	
