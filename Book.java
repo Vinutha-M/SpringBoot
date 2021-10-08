@@ -47,7 +47,7 @@ public class Book {
 	@JsonIgnore
 	@OneToOne(mappedBy="book",cascade= CascadeType.ALL)
 	Review review;
-	
+	@JsonIgnore
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="orderdetails_fk")
 	OrderDetails orderDetails;

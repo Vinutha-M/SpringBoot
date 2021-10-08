@@ -23,7 +23,7 @@ public class Category {
 	@GeneratedValue
 	private int categoryId;	
 	private String categoryName;
-	
+	@JsonIgnore
 	@OneToMany(targetEntity=Book.class, cascade=CascadeType.ALL)
 	@JoinColumn(name="Category_fk", referencedColumnName = "categoryId")
 	private List<Book> book = new ArrayList<>();
